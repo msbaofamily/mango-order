@@ -847,38 +847,51 @@
   }
 
   async function submitForm() {
-    if (!validate()) return;
+  if (!validate()) return;
 
-    const btn = document.getElementById('submit-btn');
-    btn.disabled = true;
-    btn.textContent = '送出中...';
+  const btn = document.getElementById('submit-btn');
+  btn.disabled = true;
+  btn.textContent = '送出中...';
 
-    const p1w = document.getElementById('p1-weight');
-    const p2w = document.getElementById('p2-weight');
-    const p1q = parseInt(document.getElementById('p1-qty').value);
-    const p2q = parseInt(document.getElementById('p2-qty').value);
-    const p1price = parseInt(p1w.value) || 0;
-    const p2price = parseInt(p2w.value) || 0;
+  const p1w = document.getElementById('p1-weight');
+  const p2w = document.getElementById('p2-weight');
+  const p1q = parseInt(document.getElementById('p1-qty').value);
+  const p2q = parseInt(document.getElementById('p2-qty').value);
+  const p1price = parseInt(p1w.value) || 0;
+  const p2price = parseInt(p2w.value) || 0;
 
-    const data = {
-      timestamp: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
-      name: document.getElementById('name').value.trim(),
-      phone: document.getElementById('phone').value.trim(),
-      address: document.getElementById('address').value.trim(),
-      email: document.getElementById('email').value.trim(),
-      p1: p1price > 0 ? `${p1w.selectedOptions[0].text.split('（')[0]} × ${p1q} = NT$${p1price * p1q}` : '未購買',
-      p2: p2price > 0 ? `${p2w.selectedOptions[0].text.split('（')[0]} × ${p2q} = NT$${p2price * p2q}` : '未購買',
-      total: p1price * p1q + p2price * p2q,
-      payment: document.querySelector('input[name="payment"]:checked').value,
-      paymentCode: document.getElementById('payment-code').value.trim(),
-      note: document.getElementById('note').value.trim(),
-    };
+  const data = {
+    timestamp: new Date().toLocaleString('zh-TW', { timeZone: 'Asia/Taipei' }),
+    name: document.getElementById('name').value.trim(),
+    phone: document.getElementById('phone').value.trim(),
+    address: document.getElementById('address').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    p1: p1price > 0 ? `${p1w.selectedOptions[0].text.split('（')[0]} × ${p1q} = NT$${p1price * p1q}` : '未購買',
+    p2: p2price > 0 ? `${p2w.selectedOptions[0].text.split('（')[0]} × ${p2q} = NT$${p2price * p2q}` : '未購買',
+    total: p1price * p1q + p2price * p2q,
+    payment: document.querySelector('input[name="payment"]:checked').value,
+    paymentCode: document.getElementById('payment-code').value.trim(),
+    note: document.getElementById('note').value.trim(),
+  };
 
-    try {
-      await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      });
-      document.getElementById('success
+  try {
+    const res = await fetch(SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+
+    console.log('送出成功', res);
+
+    document.getElementById('success-overlay').classList.add('show');
+
+  } catch (error) {
+    console.error('錯誤:', error);
+    alert('送出失敗，請稍後再試');
+  }
+
+  btn.disabled = false;
+  btn.textContent = '確認送出訂單';
+}
