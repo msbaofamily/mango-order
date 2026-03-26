@@ -86,26 +86,26 @@
   .product-item:hover { border-color: var(--mango); box-shadow: 0 4px 16px var(--shadow); }
 
   .product-layout {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
     gap: 14px;
     align-items: flex-start;
   }
   .product-img {
-    width: 100%;
-    aspect-ratio: 1 / 1
+    width: 110px;
+    height: 110px;
     border-radius: 10px;
     object-fit: cover;
+    flex-shrink: 0;
     border: 1px solid var(--border);
   }
   .product-right {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     min-width: 0;
   }
-  .product-name { font-family: 'Noto Serif TC', serif; font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+  .product-name { font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
   .product-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
 
   /* Island freight */
@@ -291,7 +291,7 @@
       <div class="product-layout">
         <img class="product-img" src="https://drive.google.com/thumbnail?id=1BINAvwo4efoepr-0sQY4qUv-WphX7WKS&sz=w300" alt="水蜜桃芒果">
         <div class="product-right">
-          <div>
+          <div style="grid-column: 1 / -1;">
             <div class="product-name">水蜜桃芒果</div>
             <div class="product-desc">香甜多汁！全家搶著吃<br>果肉細緻，人氣王！</div>
           </div>
@@ -321,7 +321,7 @@
       <div class="product-layout">
         <img class="product-img" src="https://drive.google.com/thumbnail?id=1Skr5YEuxmb-AMcKARB7QGWynYcTJisYj&sz=w300" alt="雞蛋芒果">
         <div class="product-right">
-          <div>
+         <div style="grid-column: 1 / -1;">
             <div class="product-name">雞蛋芒果</div>
             <div class="product-desc">懶人最愛！不用切芒果<br>產量稀少，超人氣！</div>
           </div>
