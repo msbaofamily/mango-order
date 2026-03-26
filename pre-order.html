@@ -143,8 +143,8 @@
     margin-bottom: 16px;
   }
   .product-img {
-    width: 80px;
-    height: 80px;
+    width: 110px;
+    height: 110px;
     border-radius: 10px;
     object-fit: cover;
     flex-shrink: 0;
@@ -161,7 +161,7 @@
   .product-desc { font-size: 12px; color: var(--text-light); line-height: 1.7; }
   .product-controls {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1.5fr;
     gap: 12px;
   }
 
@@ -201,9 +201,9 @@
     align-items: end;
   }
   .island-price-input { position: relative; }
-  .island-price-input input { padding-left: 36px; }
+  .island-price-input input { padding-left: 14px; }
   .island-price-input::before {
-    content: 'NT$';
+    content: '';
     position: absolute;
     left: 12px;
     top: 50%;
@@ -726,7 +726,7 @@
 
 <!-- 聯絡資訊 -->
 <div class="contact-footer">
-  <p><strong>聯絡我們</strong><br>LINE 官方：@488sftbo<br>連絡電話：0975-399-178<br>Email：ms.baofamily@gmail.com</p>
+  <p><strong>聯絡我們</strong><br>LINE 官方：@488sftbo<br>Email：ms.baofamily@gmail.com</p>
 </div>
 
 <!-- 成功畫面 -->
@@ -739,9 +739,9 @@
   </div>
   <div class="success-btns">
     <button class="btn-back" onclick="goBack()">↩ 返回表單</button>
+    <a href="https://line.me/R/ti/p/@488sftbo" target="_blank" style="padding:12px 28px;background:white;color:#06C755;border:2px solid #06C755;border-radius:10px;font-family:inherit;font-size:15px;font-weight:600;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;">💬 聯絡 LINE</a>
     <button class="btn-close" onclick="window.close()">✕ 結束</button>
   </div>
-</div>
 
 <script>
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxBHTeLc91H0frCTTcFCblSrL6wMt99G0Akki8vYnM3vl2SxIdBl-H1mf5OmauLOFbhDA/exec';
