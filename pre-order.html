@@ -161,7 +161,7 @@
   .product-desc { font-size: 12px; color: var(--text-light); line-height: 1.7; }
   .product-controls {
     display: grid;
-    grid-template-columns: 1fr 1.5fr;
+    grid-template-columns: 1fr 1fr;
     gap: 12px;
   }
 
@@ -594,7 +594,7 @@
         <div class="field" style="margin:0" id="island-price-wrap">
           <label>外島運費金額 <small>（選填）</small></label>
           <div class="island-price-input">
-            <input type="number" id="island-price" placeholder="0" min="0" value="0" oninput="calcTotal()">
+            <input type="number" id="island-price" placeholder="" min="0" inputmode="numeric" oninput="calcTotal()">
           </div>
         </div>
       </div>
@@ -700,7 +700,7 @@
 
     <div class="field" style="margin-top:16px;margin-bottom:0">
       <label>匯款帳號後5碼 或 街口帳號9碼 <span class="req">*</span></label>
-      <input type="text" id="payment-code" placeholder="請提供後5碼或街口帳號，以便對帳">
+      <input type="text" id="payment-code" placeholder="請提供後5碼或街口帳號，以便對帳" inputmode="numeric">
       <div class="error-msg" id="payment-err">請填寫帳號資料（至少5碼）</div>
     </div>
   </div>
