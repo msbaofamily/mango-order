@@ -98,13 +98,13 @@
     flex-shrink: 0;
     border: 1px solid var(--border);
   }
-  .product-right {
-    flex: 1;
+  .product-controls {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    min-width: 0;
+    gap: 12px;
+    margin-top: 12px;
   }
+  .product-info { flex: 1; }
   .product-name { font-family: 'Noto Serif TC', serif; font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
   .product-desc { font-size: 12px; color: var(--text-light); line-height: 1.6; }
 
@@ -289,20 +289,30 @@
     <!-- 水蜜桃芒果 -->
     <div class="product-item">
       <div class="product-layout">
-        <img class="product-img" src="https://drive.google.com/thumbnail?id=1BINAvwo4efoepr-0sQY4qUv-WphX7WKS&sz=w300" alt="水蜜桃芒果">
-        <div class="product-right">
-          <div style="grid-column: 1 / -1;">
-            <div class="product-name">水蜜桃芒果</div>
-            <div class="product-desc">香甜多汁！全家搶著吃<br>果肉細緻，人氣王！</div>
-          </div>
-          <div class="field">
-            <label>斤數選擇</label>
-            <select id="p1-weight" onchange="calcTotal()">
-              <option value="0" data-label="">── 不購買 ──</option>
-              <option value="750" data-label="5斤">5斤（NT$750）</option>
-              <option value="1400" data-label="10斤">10斤（NT$1,400）</option>
-            </select>
-          </div>
+       <img class="product-img" src="https://drive.google.com/thumbnail?id=1BINAvwo4efoepr-0sQY4qUv-WphX7WKS&sz=w300" alt="水蜜桃芒果">
+        <div class="product-info">
+          <div class="product-name">水蜜桃芒果</div>
+          <div class="product-desc">香甜多汁！全家搶著吃<br>果肉細緻，人氣王！</div>
+        </div>
+      </div>
+      <div class="product-controls">
+        <div class="field" style="margin:0">
+          <label>斤數選擇</label>
+          <select id="p1-weight" onchange="calcTotal()">
+            <option value="0" data-label="">── 不購買 ──</option>
+            <option value="750" data-label="5斤">5斤（NT$750）</option>
+            <option value="1400" data-label="10斤">10斤（NT$1,400）</option>
+          </select>
+        </div>
+        <div class="field" style="margin:0">
+          <label>數量</label>
+          <select id="p1-qty" onchange="calcTotal()">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
           <div class="field">
             <label>數量</label>
             <select id="p1-qty" onchange="calcTotal()">
@@ -320,20 +330,30 @@
     <div class="product-item">
       <div class="product-layout">
         <img class="product-img" src="https://drive.google.com/thumbnail?id=1Skr5YEuxmb-AMcKARB7QGWynYcTJisYj&sz=w300" alt="雞蛋芒果">
-        <div class="product-right">
-         <div style="grid-column: 1 / -1;">
-            <div class="product-name">雞蛋芒果</div>
-            <div class="product-desc">懶人最愛！不用切芒果<br>產量稀少，超人氣！</div>
-          </div>
-          <div class="field">
-            <label>斤數選擇</label>
-            <select id="p2-weight" onchange="calcTotal()">
-              <option value="0" data-label="">── 不購買 ──</option>
-              <option value="350" data-label="1斤">1斤（NT$350）</option>
-              <option value="750" data-label="3斤">3斤（NT$750）</option>
-              <option value="1200" data-label="5斤">5斤（NT$1,200）</option>
-            </select>
-          </div>
+        <div class="product-info">
+          <div class="product-name">雞蛋芒果</div>
+          <div class="product-desc">懶人最愛！不用切芒果<br>產量稀少，超人氣！</div>
+        </div>
+      </div>
+      <div class="product-controls">
+        <div class="field" style="margin:0">
+          <label>斤數選擇</label>
+          <select id="p2-weight" onchange="calcTotal()">
+            <option value="0" data-label="">── 不購買 ──</option>
+            <option value="350" data-label="1斤">1斤（NT$350）</option>
+            <option value="750" data-label="3斤">3斤（NT$750）</option>
+            <option value="1200" data-label="5斤">5斤（NT$1,200）</option>
+          </select>
+        </div>
+        <div class="field" style="margin:0">
+          <label>數量</label>
+          <select id="p2-qty" onchange="calcTotal()">
+            <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+            <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+            <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+            <option value="10">10</option>
+          </select>
+        </div>
           <div class="field">
             <label>數量</label>
             <select id="p2-qty" onchange="calcTotal()">
