@@ -161,6 +161,11 @@
     <p class="intro-text">再來你會看到另一種雞蛋大小的「<strong>福爾摩沙一號</strong>」，其實就是水蜜桃芒果，俗稱「<strong>雞蛋芒果</strong>」，差別只在於沒有授粉，所以就長得比較嬌小俏麗，吃起來超方便，比一般水蜜桃芒果更受歡迎，可惜產量也較少，因此價格也更高。</p>
   </div>
 
+   <div style="background:linear-gradient(135deg,#E8920F,#F5A623);border-radius:16px;padding:20px;margin-bottom:20px;text-align:center;color:white;box-shadow:0 4px 16px rgba(245,166,35,0.35);">
+    <div style="font-size:13px;letter-spacing:2px;margin-bottom:8px;opacity:0.9;">🐦 早鳥優惠截止倒數</div>
+    <div id="countdown" style="font-family:'Noto Serif TC',serif;font-size:32px;font-weight:700;letter-spacing:4px;">--:--:--</div>
+    <div style="font-size:12px;margin-top:8px;opacity:0.85;">早鳥優惠結束後恢復原價，把握機會！</div>
+  </div>
   <div style="text-align:center; font-size:12px; color:var(--text-light); margin: -8px 0 16px; letter-spacing:0.5px;">
     ✦ 以下產品價格皆已包含運費（外島需另計運費）✦
   </div>
@@ -184,7 +189,7 @@
           <select id="p1-weight" onchange="calcTotal()">
             <option value="0" data-label="">── 不購買 ──</option>
             <option value="650" data-label="5台斤/3公斤">5台斤/3公斤（NT$650）</option>
-            <option value="1150" data-label="10台斤/6公斤">10台斤/6公斤（NT$1,150）</option>
+            <option value="1150" data-label="10台斤/6公斤" selected>10台斤/6公斤（NT$1,150）</option>
           </select>
         </div>
         <div class="field-zero">
@@ -205,7 +210,7 @@
       <div class="product-header">
         <img class="product-img" src="https://drive.google.com/thumbnail?id=1Skr5YEuxmb-AMcKARB7QGWynYcTJisYj&sz=w300" alt="雞蛋芒果">
         <div class="product-info">
-          <div class="product-name">雞蛋芒果</div>
+          <div class="product-name">水蜜桃芒果 <span style="background:#E05A3A;color:white;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;letter-spacing:1px;vertical-align:middle;">🐦 早鳥限定</span></div>
           <div class="product-desc">懶人最愛！不用切芒果<br>產量稀少，超人氣！</div>
         </div>
       </div>
@@ -392,6 +397,28 @@
   // 售完開關 — 在 Google Sheet 的「設定」分頁控制
   // 這裡不需要手動改，由 Apps Script 回傳狀態
   // =============================================
+  // 早鳥截止時間 — 改這裡的日期就好！格式：年, 月-1, 日, 時, 分
+  var DEADLINE = new Date(2025, 3, 30, 23, 59); // 2025年5月10日 23:59
+
+  function updateCountdown() {
+    var now = new Date();
+    var diff = DEADLINE - now;
+    if (diff <= 0) {
+      document.getElementById('countdown').textContent = '早鳥優惠已結束';
+      return;
+    }
+    var days  = Math.floor(diff / (1000*60*60*24));
+    var hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    var mins  = Math.floor((diff % (1000*60*60)) / (1000*60));
+    var secs  = Math.floor((diff % (1000*60)) / 1000);
+    var text  = days > 0
+      ? days + ' 天 ' + String(hours).padStart(2,'0') + ':' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0')
+      : String(hours).padStart(2,'0') + ':' + String(mins).padStart(2,'0') + ':' + String(secs).padStart(2,'0');
+    document.getElementById('countdown').textContent = text;
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+  document.addEventListener('DOMContentLoaded', function() { calcTotal(); });
   window.addEventListener('load', function() {
     var img = new Image();
     img.src = SCRIPT_URL + '?action=getStatus&t=' + Date.now();
