@@ -184,13 +184,14 @@
         </div>
       </div>
       <div class="product-controls">
-        <div class="field-zero">
+         <div class="field-zero">
           <label>斤數選擇</label>
           <select id="p1-weight" onchange="calcTotal()">
-            <option value="0" data-label="">── 不購買 ──</option>
-            <option value="650" data-label="5台斤/3公斤">5台斤/3公斤（NT$650）</option>
-            <option value="1050" data-label="10台斤/6公斤" selected>10台斤/6公斤（NT$1,050）</option>
+            <option value="0" data-label="" data-original="0">── 不購買 ──</option>
+            <option value="600" data-label="5台斤/3公斤" data-original="700">5台斤/3公斤（NT$600）</option>
+            <option value="1100" data-label="10台斤/6公斤" data-original="1150" selected>10台斤/6公斤（NT$1,100）</option>
           </select>
+          <div id="p1-price-tag" style="margin-top:6px;font-size:13px;min-height:20px;"></div>
         </div>
         <div class="field-zero">
           <label>數量</label>
@@ -462,6 +463,15 @@
     var p2Total = p2Price * p2Qty;
     var grand   = p1Total + p2Total + islandPrice;
 
+    // 水蜜桃芒果原價對比顯示
+    var p1Sel = document.getElementById('p1-weight');
+    var p1Original = Number(p1Sel.options[p1Sel.selectedIndex].getAttribute('data-original')) || 0;
+    var p1Tag = document.getElementById('p1-price-tag');
+    if (p1Price > 0 && p1Original > 0) {
+      p1Tag.innerHTML = '<span style="color:var(--text-light);text-decoration:line-through;margin-right:6px;">原價 NT$' + p1Original + '</span><span style="color:#E05A3A;font-weight:600;">早鳥 NT$' + p1Price + '</span>';
+    } else {
+      p1Tag.innerHTML = '';
+    }
     var s1 = document.getElementById('summary-p1');
     if (p1Price > 0) {
       s1.style.display = 'flex';
